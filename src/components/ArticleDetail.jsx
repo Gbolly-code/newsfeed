@@ -18,20 +18,16 @@ const ArticleDetail = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // If no article in state, redirect to home
     if (!article) {
       navigate('/');
       return;
     }
 
-    // Fetch related articles based on article category or source
     const fetchRelatedArticles = async () => {
       try {
-        // Try to get articles from the same source or category
         const searchTerm = article.title?.split(' ').slice(0, 3).join(' ') || '';
         if (searchTerm) {
           const data = await newsApi.searchArticles(searchTerm, 10);
-          // Filter out the current article and get related ones
           const filtered = data.articles?.filter(
             (a) => a.url !== article.url
           ) || [];
@@ -39,7 +35,6 @@ const ArticleDetail = () => {
         }
       } catch (err) {
         console.error('Error fetching related articles:', err);
-        // Don't show error for related articles, just leave empty
       }
     };
 
@@ -68,9 +63,7 @@ const ArticleDetail = () => {
     });
   };
 
-  // Extract category from article source or determine from content
   const getCategory = () => {
-    // Try to infer category from source name or return default
     const sourceName = article.source?.name?.toLowerCase() || '';
     if (sourceName.includes('tech') || article.title?.toLowerCase().includes('tech')) {
       return 'Technology';
@@ -78,15 +71,12 @@ const ArticleDetail = () => {
     return 'News';
   };
 
-  // Get author name (NewsAPI doesn't always provide this)
   const getAuthor = () => {
     return article.author || 'News Today Staff';
   };
 
-  // Format article content (remove [Source] tags and clean up)
   const formatContent = (content) => {
     if (!content) return '';
-    // Remove source citations like [123 chars]
     return content.replace(/\[\+\d+\s\w+\]/g, '').trim();
   };
 
@@ -96,7 +86,6 @@ const ArticleDetail = () => {
       
       <main className="flex-grow">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Breadcrumbs */}
           <nav className="text-sm text-gray-500 mb-4">
             <a href="/" className="hover:text-blue-600" onClick={(e) => { e.preventDefault(); navigate('/'); }}>
               News
@@ -105,19 +94,16 @@ const ArticleDetail = () => {
             <span className="text-gray-700">{getCategory()}</span>
           </nav>
 
-          {/* Article Title */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 leading-tight">
             {article.title}
           </h1>
 
-          {/* Author and Date */}
           <div className="text-gray-600 mb-6">
             By <span className="font-semibold">{getAuthor()}</span>
             {' · '}
             Published on {formatDate(article.publishedAt)}
           </div>
 
-          {/* Hero Image */}
           <div className="mb-8 rounded-lg overflow-hidden">
             {article.urlToImage ? (
               <img
@@ -147,7 +133,6 @@ const ArticleDetail = () => {
             )}
           </div>
 
-          {/* Article Content */}
           <div className="prose prose-lg max-w-none mb-8">
             {article.description && (
               <p className="text-xl text-gray-700 font-medium mb-6 leading-relaxed">
@@ -187,15 +172,12 @@ const ArticleDetail = () => {
             )}
           </div>
 
-          {/* Engagement Bar */}
           <EngagementBar />
 
-          {/* Related Articles */}
           {relatedArticles.length > 0 && (
             <RelatedArticles articles={relatedArticles} />
           )}
 
-          {/* Comments Section */}
           <CommentsSection />
         </div>
       </main>
@@ -206,7 +188,4 @@ const ArticleDetail = () => {
 };
 
 export default ArticleDetail;
-
-
-
 

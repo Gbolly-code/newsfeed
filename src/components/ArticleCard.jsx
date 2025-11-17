@@ -23,7 +23,6 @@ const ArticleCard = ({ article }) => {
       onClick={handleClick}
       className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 cursor-pointer"
     >
-      {/* Image */}
       <div className="relative h-48 bg-gray-200 overflow-hidden">
         {article.urlToImage ? (
           <img
@@ -53,7 +52,6 @@ const ArticleCard = ({ article }) => {
         )}
       </div>
 
-      {/* Content */}
       <div className="p-5">
         <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 hover:text-blue-600 transition-colors">
           {article.title}

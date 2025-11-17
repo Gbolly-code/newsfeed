@@ -87,6 +87,3 @@ const EngagementBar = () => {
 
 export default EngagementBar;
 
-
-
-

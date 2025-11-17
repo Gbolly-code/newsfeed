@@ -8,7 +8,6 @@ const Header = () => {
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <div
             onClick={() => navigate('/')}
             className="flex items-center space-x-2 cursor-pointer"
@@ -29,7 +28,6 @@ const Header = () => {
             <span className="text-xl font-bold text-gray-900">News Today</span>
           </div>
 
-          {/* Navigation Links */}
           <nav className="hidden md:flex items-center space-x-6">
             <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">
               Top Stories
@@ -51,7 +49,6 @@ const Header = () => {
             </a>
           </nav>
 
-          {/* Utility Icons */}
           <div className="flex items-center space-x-4">
             <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors">
               <svg

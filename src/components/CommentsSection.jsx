@@ -46,7 +46,6 @@ const CommentsSection = () => {
         Comments ({comments.length})
       </h2>
 
-      {/* Existing Comments */}
       <div className="space-y-6 mb-8">
         {comments.map((comment) => (
           <div key={comment.id} className="flex gap-4">
@@ -66,7 +65,6 @@ const CommentsSection = () => {
         ))}
       </div>
 
-      {/* Comment Input */}
       <form onSubmit={handleSubmit} className="flex gap-4">
         <div className="flex-shrink-0">
           <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600">
@@ -94,7 +92,4 @@ const CommentsSection = () => {
 };
 
 export default CommentsSection;
-
-
-
 

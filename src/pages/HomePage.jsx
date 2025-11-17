@@ -9,7 +9,6 @@ import ErrorMessage from '../components/ErrorMessage';
 import Footer from '../components/Footer';
 import newsApi from '../services/newsApi';
 
-// Map category IDs to NewsAPI category values
 const categoryMap = {
   all: null,
   top: null,
@@ -27,7 +26,6 @@ function HomePage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [isSearchMode, setIsSearchMode] = useState(false);
 
-  // Fetch news data
   const fetchNews = async (category = null, search = null) => {
     setLoading(true);
     setError(null);
@@ -36,11 +34,9 @@ function HomePage() {
       let data;
       
       if (search && search.trim() !== '') {
-        // Search mode
         data = await newsApi.searchArticles(search);
         setIsSearchMode(true);
       } else {
-        // Category/headlines mode
         const apiCategory = categoryMap[category] || null;
         data = await newsApi.getTopHeadlines({ country: 'us', category: apiCategory });
         setIsSearchMode(false);
@@ -61,38 +57,31 @@ function HomePage() {
     }
   };
 
-  // Initial load
   useEffect(() => {
     fetchNews(activeCategory);
   }, []);
 
-  // Handle category change
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
-    setSearchQuery(''); // Clear search when changing category
+    setSearchQuery('');
     fetchNews(category);
   };
 
-  // Handle search
   const handleSearch = () => {
     if (searchQuery.trim() === '') {
-      // If search is empty, go back to category view
       fetchNews(activeCategory);
     } else {
       fetchNews(null, searchQuery);
     }
   };
 
-  // Handle search input change
   const handleSearchChange = (value) => {
     setSearchQuery(value);
     if (value.trim() === '') {
-      // If search is cleared, go back to category view
       fetchNews(activeCategory);
     }
   };
 
-  // Get hero article (first article) and grid articles (rest)
   const heroArticle = articles.length > 0 ? articles[0] : null;
   const gridArticles = articles.slice(1);
 
@@ -132,7 +121,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-
-
-

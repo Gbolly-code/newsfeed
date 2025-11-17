@@ -23,7 +23,6 @@ const HeroSection = ({ article }) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
       <div className="relative rounded-xl overflow-hidden shadow-lg">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700"
           style={{
@@ -37,7 +36,6 @@ const HeroSection = ({ article }) => {
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         </div>
 
-        {/* Content */}
         <div className="relative p-8 md:p-12 lg:p-16 text-white">
           <div className="max-w-3xl">
             <span className="inline-block px-3 py-1 mb-4 text-sm font-semibold bg-red-600 rounded-full">

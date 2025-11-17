@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 const RelatedArticles = ({ articles = [] }) => {
   const navigate = useNavigate();
 
-  // Show only first 2 articles as related
   const relatedArticles = articles.slice(0, 2);
 
   if (relatedArticles.length === 0) {
@@ -25,7 +24,6 @@ const RelatedArticles = ({ articles = [] }) => {
             onClick={() => handleArticleClick(article)}
             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
           >
-            {/* Image */}
             <div className="relative h-48 bg-gray-200 overflow-hidden">
               {article.urlToImage ? (
                 <img
@@ -55,7 +53,6 @@ const RelatedArticles = ({ articles = [] }) => {
               )}
             </div>
 
-            {/* Content */}
             <div className="p-5">
               <span className="inline-block px-2 py-1 mb-2 text-xs font-semibold text-blue-600 bg-blue-50 rounded">
                 {article.source?.name || 'News'}
@@ -78,7 +75,4 @@ const RelatedArticles = ({ articles = [] }) => {
 };
 
 export default RelatedArticles;
-
-
-
 

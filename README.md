@@ -50,9 +50,9 @@ Installation
    VITE_NEWS_API_KEY=your_api_key_here
    ```
    
-   Or use the provided API key:
+   Or get your API key from [NewsAPI.org](https://newsapi.org/):
    ```env
-   VITE_NEWS_API_KEY=1036a209a79a470f8f9c6a473a89e0d4
+   VITE_NEWS_API_KEY=your_api_key_here
    ```
 
 4. **Start the development server**
@@ -80,14 +80,20 @@ npm run preview
 
 ## Deployment
 
-### Vercel
+### Vercel (Recommended)
 
 1. Push your code to GitHub
 2. Import your repository in Vercel
 3. Add environment variable:
    - Name: `VITE_NEWS_API_KEY`
-   - Value: Your NewsAPI key
+   - Value: Your NewsAPI key (get it from [newsapi.org](https://newsapi.org/))
 4. Deploy
+
+**Important:** The project includes Vercel serverless functions (`/api/top-headlines` and `/api/everything`) to handle CORS issues. These functions proxy requests to NewsAPI server-side, avoiding browser CORS restrictions.
+
+The app automatically uses:
+- **Serverless functions** in production (Vercel)
+- **Direct API calls** in development (local)
 
 ### Netlify
 
